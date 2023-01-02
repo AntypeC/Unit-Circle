@@ -8,14 +8,22 @@
 </head>
 <body>
     <div id="viewport">
-        <div id="pointer"></div>
-        <span class="circle">
-            <span></span>
+        <div class="pointer" id="body">
+        </div>
+        <div>
+            <span class="axis" id="x"></span>
+            <span class="axis" id="y"></span>
+        </div>
+        <span id="circle">
+            <span id="dot"></span>
         </span>
-        <div id="grid"></div>
         <ul>
-            <li id="coordinates"></li>
+            <p>Figures: </p>
+            <li id="coords"></li>
             <li id="angle"></li>
+            <li id="sin"></li>
+            <li id="cos"></li>
+            <li id="tan"></li>
         </ul>
     </div>
     <style>
@@ -23,7 +31,7 @@
             height: 100vh;
             width: 100vw;
         }
-        .circle {
+        #circle {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -34,7 +42,17 @@
             border: 5px solid #000000;
             display: inline-block;
         }
-        #pointer {
+        #dot {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 12px;
+            width: 12px;
+            background-color: black;
+            border-radius: 50%;
+        }
+        .pointer {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -42,10 +60,28 @@
             width: 5px;
             background-color: black;
             transform: rotate(-90deg);
-            transform-origin: 0% 0%;
+            transform-origin: 25% 0%;
+        }
+        .axis {
+            position: fixed;
+            height: 80%;
+            width: 2px;
+            background-color: black;
+        }
+        #x {
+            top: 10%;
+            left: 50%;
+            transform: rotate(90deg);
+        }
+        #y {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
         ul {
             list-style-type: none;
+            font-family:courier, courier new, serif;
+            color: darkslategrey;
         }
     </style>
     <script src="index.js"></script>

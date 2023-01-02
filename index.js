@@ -1,35 +1,28 @@
-class Circle {
-    constructor() {
-        this.width = 0.5*window.innerWidth;
-        this.height = 0.5*window.innerHeight;
-        this.viewport = document.getElementById('viewport');
-        this.pointer = document.getElementById('pointer');
-        this.cursorX, this.cursorY, this.x, this.y, this.degree = null;
+var width = 0.5*window.innerWidth;
+var height = 0.5*window.innerHeight;
+var cursorX, cursorY, x, y, degree = null;
+
+document.getElementById('viewport').addEventListener('mousemove', (event) => {
+    cursorX = event.pageX-width;
+    cursorY = -(event.pageY-height);
+    x = cursorX/width;
+    y = cursorY/height;
+    console.log('('+x+', '+y+')')
+    let basic_angle = 180*(Math.atan((y)/(x))/Math.PI);
+
+    if (x>0 && y>0) {
+        degree = basic_angle;
+    } else if ((x<0 && y>0) || (x<0 && y<0)) {
+        degree = 180 + basic_angle;
+    } else if (x>0 && y<0) {
+        degree = 360 + basic_angle;
     }
+    radian = Math.PI*(degree/180)
+    document.getElementsByClassName('pointer')[0].style.transform = 'rotate('+(-degree-90)+'deg)';
+    document.getElementById('coords').innerHTML = "P(" + x + ", " + y + ")";
+    document.getElementById('angle').innerHTML = 'θ = '+ radian+' rad = '+degree+'°';
+    document.getElementById('sin').innerHTML = 'sin(θ) = '+Math.sin(radian);
+    document.getElementById('cos').innerHTML = 'cos(θ) = '+Math.cos(radian);
+    document.getElementById('tan').innerHTML = 'tan(θ) = '+Math.tan(radian);
 
-    animateCircle() {
-        this.viewport.addEventListener('mousemove', (event) => {
-            this.cursorX = event.pageX-this.width;
-            this.cursorY = -(event.pageY-this.height);
-            this.x = this.cursorX/this.width;
-            this.y = this.cursorY/this.height;
-            console.log('('+this.x+', '+this.y+')')
-            let basic_angle = 180*(Math.atan((this.y)/(this.x))/Math.PI);
-
-            if (this.x>0 && this.y>0) {
-                this.degree = basic_angle;
-            } else if ((this.x<0 && this.y>0) || (this.x<0 && this.y<0)) {
-                this.degree = 180 + basic_angle;
-            } else if (this.x>0 && this.y<0) {
-                this.degree = 360 + basic_angle;
-            }
-            this.pointer.style.transform = 'rotate('+(-this.degree-90)+'deg)';
-            return this.degree
-        })
-    }
-}
-
-const page = new Circle();
-const rotate_deg = page.animateCircle();
-document.getElementById('coordinates').innerHTML = "X coords ~ " + page.cursorX + ":" + page.width + ", Y coords ~ " + page.cursorY + ":" + page.height + ", (" + page.x + ", " + page.y + ")";
-document.getElementById('angle').innerHTML = 'θ = '+rotate_deg;
+})

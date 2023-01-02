@@ -8,15 +8,17 @@
 </head>
 <body>
     <div id="viewport">
-        <div class="pointer" id="body">
-        </div>
+        <span class="sector"></span>
+        <span class="sector"></span>
+        <span class="circle" id="circle-border">
+            <span class="circle" id="dot"></span>
+        </span>
         <div>
             <span class="axis" id="x"></span>
             <span class="axis" id="y"></span>
         </div>
-        <span id="circle">
-            <span id="dot"></span>
-        </span>
+        <div class="pointer" id="body">
+        </div>
         <ul>
             <p>Figures: </p>
             <li id="coords"></li>
@@ -31,26 +33,33 @@
             height: 100vh;
             width: 100vw;
         }
-        #circle {
+        .circle {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+        #circle-border {
             height: 600px;
             width: 600px;
-            border-radius: 50%;
             border: 5px solid #000000;
             display: inline-block;
         }
         #dot {
+            height: 12px;
+            width: 12px;
+            background-color: black;
+        }
+        .sector {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            height: 12px;
-            width: 12px;
-            background-color: black;
             border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            background-color: rgba(0, 128, 0, 0.5);
         }
         .pointer {
             position: fixed;

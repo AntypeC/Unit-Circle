@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnitCircle</title>
+</head>
+<body>
+    <div id="viewport">
+        <div id="pointer"></div>
+        <span class="circle">
+            <span></span>
+        </span>
+        <div id="grid"></div>
+        <ul>
+            <li id="coordinates"></li>
+            <li id="angle"></li>
+        </ul>
+    </div>
+    <style>
+        #viewport {
+            height: 100vh;
+            width: 100vw;
+        }
+        .circle {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 600px;
+            width: 600px;
+            border-radius: 50%;
+            border: 5px solid #000000;
+            display: inline-block;
+        }
+        #pointer {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            height: 300px;
+            width: 5px;
+            background-color: black;
+            transform: rotate(-90deg);
+            transform-origin: 0% 0%;
+        }
+        ul {
+            list-style-type: none;
+        }
+    </style>
+    <script src="index.js"></script>
+</body>
+</html>

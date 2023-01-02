@@ -1,0 +1,14 @@
+// x/y = (j-250)/(k-250)
+
+// 0 ~ 250 to 0 ~ 1
+// 
+
+// calculate degree
+// tan(n) = x/y
+// arctan(x/y) = n
+
+// h = sqrt(x^2 + y^2)
+// n = arcsin(y/h)
+// x = j-250
+// y = k-250
+// n = arcsin((k-250)/sqrt(x^2 + y^2))

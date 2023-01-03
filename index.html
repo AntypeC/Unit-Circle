@@ -6,21 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnitCircle</title>
 </head>
-<body>
+<body style="background-color: white">
     <div id="viewport">
-        <span class="sector"></span>
-        <span class="sector"></span>
-        <span class="circle" id="circle-border">
-            <span class="circle" id="dot"></span>
-        </span>
+        <span class="sector" id="s1"></span>
+        <span class="sector" id="sector-cover"></span>
+        <span class="sector" id="s2"></span>
         <div>
             <span class="axis" id="x"></span>
             <span class="axis" id="y"></span>
         </div>
         <div class="pointer" id="body">
+            <img src="./arrow.png" id="arrow"></img>
         </div>
+        <span class="circle" id="circle-border">
+            <span class="circle" id="dot"></span>
+        </span>
         <ul>
-            <p>Figures: </p>
+            <h1>Unit Circle</h1>
             <li id="coords"></li>
             <li id="angle"></li>
             <li id="sin"></li>
@@ -43,13 +45,13 @@
         #circle-border {
             height: 600px;
             width: 600px;
-            border: 5px solid #000000;
+            border: 3px solid #000080;
             display: inline-block;
         }
         #dot {
             height: 12px;
             width: 12px;
-            background-color: black;
+            background-color: red;
         }
         .sector {
             position: fixed;
@@ -57,25 +59,46 @@
             left: 50%;
             transform: translate(-50%, -50%);
             border-radius: 50%;
-            height: 100px;
-            width: 100px;
-            background-color: rgba(0, 128, 0, 0.5);
+            /* background-color: rgba(0, 128, 0, 0.5); */
+        }
+        #s1 {
+            height: 120px;
+            width: 120px;
+            z-index: -2;
+        }
+        #sector-cover {
+            height: 130px;
+            width: 130px;
+            z-index: -1;
+        }
+        #s2 {
+            height: 120px;
+            width: 120px;
+            z-index: 0;
         }
         .pointer {
             position: fixed;
+            background-color: red;
+            transform-origin: 25% 0%;
+        }
+        #body {
             top: 50%;
             left: 50%;
-            height: 300px;
-            width: 5px;
-            background-color: black;
+            height: 280px;
+            width: 3px;
             transform: rotate(-90deg);
-            transform-origin: 25% 0%;
+        }
+        #arrow {
+            height: 50px;
+            width: 50px;
+            -webkit-transform: translate(-47%, 250px) rotate(90deg);
+            /* transform: translate(250px, 0px); */
         }
         .axis {
             position: fixed;
             height: 80%;
             width: 2px;
-            background-color: black;
+            background-color: #000080;
         }
         #x {
             top: 10%;
